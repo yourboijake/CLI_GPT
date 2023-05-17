@@ -6,7 +6,7 @@ The openai_session script handles issues relating to the context, cycling previo
 Linux Instructions:
 - clone this repo
 - create a "config.json" file, containing api_key and organization
-- edit the bash file to the appropriate global path to the repo location
+- edit the askgpt bash file to the appropriate global path to the repo location
 - move the bash script to your /usr/local/bin folder to make the "askgpt" command globally accessible
 (assuming /usr/local/bin is in your $PATH)
 
