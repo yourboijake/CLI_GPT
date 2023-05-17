@@ -2,10 +2,13 @@ import openai
 import argparse
 import tiktoken
 import json
+import datetime
 
 CONTEXT_TOKEN_LIMIT = 3096 #gpt 3.5 turbo has 4096 context len. subtract 1000 for max_tokens in completion
 SYSTEM_CONTEXT_PROMPT = "You are a helpful and succinct AI assistant."
 context = [{"role": "system", "content": SYSTEM_CONTEXT_PROMPT}]
+output_filename = 'chatlog_' + datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S') + '.txt'
+chat_log = ''
 
 #set up credentials for OpenAI API
 config_json = json.loads(open('/home/jacob/Desktop/Programming/AI/CLI_Tool/config.json', 'rb').read())
@@ -51,12 +54,17 @@ def consolidate_prompt(context_dict_list, num_tokens, method='window'):
     return new_context_dict_list
 
 #initialize context
-print("welcome to CLI GPT. type 'quit' to exit chat session, or 'count' to count the number of tokens in the prompt context")
+print("""welcome to CLI GPT. type 'quit' to exit chat session, 'save' to save the 
+chat session, or 'count' to count the number of tokens in the prompt context""")
 print('enter your prompt below')
 while True:
     #retrieve prompt from user
     prompt = input("> ")
     if prompt == 'quit': break
+    if prompt == 'save':
+        open(output_filename, 'a').write(chat_log)
+        chat_log = ''
+        continue
     if prompt == 'count': 
         print(count_context_tokens(context))
         continue
@@ -64,6 +72,7 @@ while True:
     #append context to include user prompt
     prompt_dict = {"role": "user", "content": prompt}
     context.append(prompt_dict)
+    chat_log += prompt + '\n'
 
     #check/correct prompt context if too many tokens in context
     num_tokens = count_context_tokens(context)
@@ -73,5 +82,6 @@ while True:
     #generate text completion
     completion = run_chat_completion(context)
     context.append({'role': "assistant", "content": completion})
+    chat_log += completion + '\n'
     print(completion + '\n')
 
