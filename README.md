@@ -15,7 +15,11 @@ jacob@jacob-ThinkPad-T440p:~/Desktop/Programming/AI/CLI_Tool$ askgpt
 welcome to CLI GPT. type 'quit' to exit chat session, or 'count' to count the number of tokens in the prompt context
 enter your prompt below
 > Hi GPT! Tell me about Immanuel Kant
-Immanuel Kant was an 18th-century German philosopher who is widely considered to be one of the most important figures in modern philosophy. He is known for his works on ethics, metaphysics, epistemology, and aesthetics, among other topics. Kant's philosophy is characterized by his emphasis on reason and the importance of the individual's ability to think for themselves. He is perhaps best known for his concept of the "categorical imperative," which is a moral principle that states that one should always act in a way that could be made into a universal law.
+Immanuel Kant was an 18th-century German philosopher who is widely considered to be one of the most important figures 
+in modern philosophy. He is known for his works on ethics, metaphysics, epistemology, and aesthetics, among other topics. 
+Kant's philosophy is characterized by his emphasis on reason and the importance of the individual's ability to think for 
+themselves. He is perhaps best known for his concept of the "categorical imperative," which is a moral principle that 
+states that one should always act in a way that could be made into a universal law.
 
 > count
 131
